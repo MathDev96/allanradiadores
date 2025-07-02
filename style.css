@@ -9,7 +9,7 @@ body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
     background: #f9f9f9;
-    color: #333;
+    color: #1d1c1c;
 }
 
 .container {
@@ -28,7 +28,7 @@ body {
 
 .logo {
     height: 6rem;
-    object-fit: contain; 
+    object-fit: contain;
 }
 
 .nav {
@@ -43,6 +43,7 @@ body {
     font-size: 1.1rem;
     transition: color 0.8s ease;
 }
+
 .nav a:hover {
     color: #ffffff;
 }
@@ -57,30 +58,79 @@ body {
 
 .hero {
     background: #FFD700;
-    text-align: center;
-    padding: 2rem 0.5rem;
     display: flex;
     flex-direction: row-reverse;
+    padding: 1.5rem 0.5rem;
+    gap:1.5rem;
     align-items: center;
 }
 
 .hero .container {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Alinha verticalmente */
+    align-items: center; /* Alinha horizontalmente */
+    text-align: center;
+    width: 100%;
+    height: 100%; /* Pode ajustar aqui se quiser altura específica */
 }
 
+/* >>> AQUI você controla o TAMANHO DO CONTAINER onde a imagem fica */
 .hero-image {
-    flex: 1.5; /* imagem ocupa mais espaço */
+    flex: 1.5;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+    max-width: 700px;   /* Largura máxima da área que a imagem pode ocupar */
+    height: 500px;      /* Altura da área que a imagem pode ocupar */
+    border-radius: 16px;
+    overflow: hidden;
 }
 
+/* >>> AQUI você controla o tamanho da IMAGEM dentro do container */
 .hero-image img {
-    width: 90%;
-    height:auto;
-    object-fit: cover;
-    border-radius: 15px;
-    border: solid 1px #5a77af;
+    position: absolute;
+    width: 100%;  /* Preenche 100% da largura do container */
+    height: 100%; /* Preenche 100% da altura do container */
+    object-fit: contain; /* Ajusta o corte da imagem; outras opções: contain ou fill */
+    opacity: 0;
+    transition: opacity 0.7s;
+}
+
+.hero-image img.active {
+    opacity: 1;
+    z-index: 1;
+}
+
+.hero-image .arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    color: #fff;
+    border: none;
+    padding: 0.4rem 0.6rem;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 2;
+    transition: background 0.3s;
+}
+
+.hero-image .arrow:hover {
+    background: rgba(0, 0, 0, 0.6);
+}
+.hero-image .arrow.left {
+    left: 10px;
+}
+.hero-image .arrow.right {
+    right: 10px;
+}
+
+.logo-servicos img {
+    height: 14rem;
+    object-fit: contain;
 }
 
 .hero h1 {
@@ -92,34 +142,44 @@ body {
     font-size: 1.2rem;
     margin-bottom: 1.5rem;
 }
-
-.hero .btn {
-    display: inline-block;
-    margin-top: 1rem;
-    background: #333;
+.hero .btn-hero {
+    margin-top: 0.5rem;
+    background: #25D366;
     color: #fff;
-    padding: 0.75rem 1.5rem;
     text-decoration: none;
-    border-radius: 4px;
+    border-radius: 25px;
+    width: fit-content;
+    font-size: 1.1rem;
+    padding: 0.75rem 1.2rem;
+    transition: background 0.3s ease;
+}
+.btn-hero:hover {
+    background: #1ebc5a;
 }
 
+
 /* Produtos */
-.produtos h2{
+.produtos {
+    background: #5a77af;
+}
+
+.produtos h2 {
     text-align: center;
     margin-bottom: 1rem;
-    text-shadow: #222 1px 1px 4px;
+    text-shadow: #141414 1px 1px 2px;
 }
 
 .produtos h3 {
     text-align: center;
     margin-bottom: 1rem;
     font-size: 1.1rem;
-    text-shadow: #222 1px 1px 2px;
-
+    text-shadow: #141414 1px 1px 1px;
+    color: #1d1c1c;
 }
+
 .produtos h3 a {
     text-decoration: none;
-    color: rgb(57, 57, 236);
+    color: rgb(4, 4, 177);
 }
 
 .grid {
@@ -129,16 +189,17 @@ body {
 }
 
 .produto {
-    border-radius: 8px;
+    border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    background: rgb(228, 228, 228);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    background: transparent;
 }
 
 .carrossel {
     position: relative;
     width: 100%;
-    height: 285px; /* Altura do card inteiro */
+    height: 285px;
+    /* Altura do card inteiro */
     overflow: hidden;
 }
 
@@ -148,7 +209,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: fill;
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
 }
@@ -158,56 +219,54 @@ body {
 }
 
 .produto p {
-    padding: 0.5rem;
+    padding: 0.6rem;
     text-align: center;
     font-weight: bold;
-    color: black;
+    color: #1d1c1c;
+    font-size: 1.1rem;
 }
 
 
 /* Sobre */
 .sobre {
-    background: rgb(228, 228, 228);;
+    background: rgb(228, 228, 228);
+    ;
     padding: 2rem 1rem;
 }
 
 .sobre h2 {
     text-align: center;
     margin-bottom: 1rem;
-    text-shadow: #222 1px 1px 4px;
+    text-shadow: #222 1px 1px 2px;
+}
 
+.sobre p {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    line-height: 1.4;
+    text-align: justify;
+}
+
+.sobre h3 {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.avaliações {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 1.1rem;
 }
 
 /* Contato */
-.contato {
+.local {
     padding: 2rem 1rem;
     background: #fff;
-}
-
-.botoes-contato {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    margin-top: 1rem;
-}
-
-.btn {
-    padding: 0.75rem 1.2rem;
-    text-decoration: none;
-    color: #fff;
-    border-radius: 4px;
-}
-
-.whatsapp {
-    background: #25D366;
-}
-
-.instagram {
-    background: #E1306C;
-}
-
-.facebook {
-    background: #3B5998;
 }
 
 /* Footer */
@@ -217,4 +276,131 @@ body {
     text-align: center;
     padding: 1rem 0;
     margin-top: 2rem;
+}
+
+/* MENU - Corrige sobreposição no mobile */
+@media (max-width: 768px) {
+    .header .container {
+        gap: 1rem;
+    }
+
+    .nav {
+        align-items: center;
+    }
+}
+
+@media (max-width: 900px) {
+
+    .hero {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .hero .container {
+        order: 1;
+    }
+
+    .hero-image {
+        order: 2;
+        width: 100%;
+        min-height: 500px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+
+    .hero-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .logo-servicos img {
+        height: 12rem;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1.5rem;
+    }
+
+    .btn-hero {
+        font-size: 1.2rem;
+        padding: 0.7rem 1.1rem;
+    }
+
+/* PRODUTOS - Corrige a proporção e altura no mobile */ 
+    .carrossel {
+        padding-top: 75%; /* Proporção 4:3 */
+    }
+    .produtos h2 {
+        font-size: 1.8rem;
+    }
+    .produtos h3 {
+        font-size: 1.3rem;
+    }
+    .produto p {
+        font-size: 1.2rem;
+    }
+    .carrossel {
+        height:400px;
+    }
+
+    .carrossel img {
+        object-fit: fill; /* Mantém imagem ajustada */
+    }
+
+/* SOBRE NÓS - Corrige imagens estouradas no mobile */
+
+    .sobre h2 {
+        font-size: 1.8rem;
+    }
+
+    .sobre p {
+        font-size: 1.2rem;
+    }
+
+    .sobre h3 {
+        font-size: 1.3rem;
+    }
+
+    .avaliações img {
+        max-width: 80vw;
+        height: auto;
+        object-fit: contain;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-image {
+        max-height: 160px;
+        height: 140px;
+        min-height: 100px;
+    }
+
+    .logo-servicos img {
+        height: 6rem;
+    }
+
+    .hero h1 {
+        font-size: 1.3rem;
+    }
+
+    .hero p {
+        font-size: 0.95rem;
+    }
+
+    .btn-hero {
+        font-size: 0.9rem;
+        padding: 0.5rem 0.9rem;
+    }
+
+    .avaliações img {
+        width: 100%;
+        max-width: 100%;
+    }
 }
