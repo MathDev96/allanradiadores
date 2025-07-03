@@ -4,6 +4,15 @@
     padding: 0;
     box-sizing: border-box;
 }
+.mapa-container {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+section {
+    margin: 0;
+}
+
 
 body {
     font-family: Arial, sans-serif;
@@ -174,7 +183,7 @@ body {
 /* Produtos */
 .produtos {
     background: #5a77af;
-    height: 80vh;
+    padding: 2rem 1rem;
 }
 
 .produtos h2 {
